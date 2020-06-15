@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -52,6 +53,7 @@ namespace MongoDBGames.Controllers
         public string HelloSecure() => "Secured Hello world!";
 
         [HttpGet()]
+        [BasicAuth]
         public async Task<ActionResult<IEnumerable<Game>>> Get()
         {
             return Ok(await _gameRepository.GetAllGames());

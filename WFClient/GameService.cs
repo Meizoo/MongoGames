@@ -1,10 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using MongoDB.Bson;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WFClient
 {
@@ -19,6 +23,7 @@ namespace WFClient
         {
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "ZGF3aWQ6ZGF3aWQ=");
                 using (var response = await client.GetAsync(_uri))
                 {
                     if (response.IsSuccessStatusCode)

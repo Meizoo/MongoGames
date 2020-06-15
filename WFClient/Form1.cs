@@ -10,11 +10,11 @@ using System.Windows.Forms;
 namespace WFClient
 {
     public partial class Form1 : Form
-	{
+    {
         private GameService gameService;
         public Form1()
-		{
-			InitializeComponent();
+        {
+            InitializeComponent();
             gameService = new GameService();
             dataGridView1.DataSource = GetProductsAsync();
         }
@@ -22,6 +22,12 @@ namespace WFClient
         public async Task<List<Game>> GetProductsAsync()
         {
             var list = await this.gameService.GetAllProducts();
+
+            if (list == null)
+            {
+                MessageBox.Show("Musisz zostać zaautoryzowany");
+                return null;
+            }
             return list;
         }
 
