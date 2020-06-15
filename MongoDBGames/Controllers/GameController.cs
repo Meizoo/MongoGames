@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
+
 using MongoDBGames.Helpers;
 using MongoDBGames.Model;
 using MongoDBGames.Repository;
@@ -9,7 +9,7 @@ using MongoDBGames.Repository;
 namespace MongoDBGames.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Game")]
+    [Route("game")]
     public class GameController : Controller
     {
         private readonly IGameRepository _gameRepository;
@@ -19,15 +19,20 @@ namespace MongoDBGames.Controllers
             _gameRepository = gameRepository;
         }
 
-        // GET: api/Game
-        [HttpGet]
+        [HttpGet("hello")]
+        public string Hello() => "Hello world!";
+
+        [BasicAuth]
+        [HttpGet("hellosecure")]
+        public string HelloSecure() => "Secured Hello world!";
+
+        [HttpGet()]
         [BasicAuth]
         public async Task<IActionResult> Get()
         {
             return new ObjectResult(await _gameRepository.GetAllGames());
         }
 
-        // GET: api/Game/name
         [HttpGet("{name}", Name = "Get")]
         public async Task<IActionResult> Get(string name)
         {
@@ -39,7 +44,6 @@ namespace MongoDBGames.Controllers
             return new ObjectResult(game);
         }
 
-        // POST: api/Game
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Game game)
         {
@@ -47,7 +51,6 @@ namespace MongoDBGames.Controllers
             return new OkObjectResult(game);
         }
 
-        // PUT: api/Game/5
         [HttpPut("{name}")]
         public async Task<IActionResult> Put(string name, [FromBody]Game game)
         {
@@ -63,7 +66,6 @@ namespace MongoDBGames.Controllers
             return new OkObjectResult(game);
         }
 
-        // DELETE: api/ApiWithActions/5
         [HttpDelete("{name}")]
         public async Task<IActionResult> Delete(string name)
         {

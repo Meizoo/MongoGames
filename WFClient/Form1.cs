@@ -12,8 +12,7 @@ namespace WFClient
 
 			var client = new HttpClient();
 
-			//var r = client.GetAsync("http://localhost:52163/GameRepository/GetAllGames").Result;
-			var r = client.GetAsync("http://localhost:52163/GameRepository/GetTest").Result;
+			var r = client.GetAsync("http://localhost:52163/game/hello").Result;
 
 			this.Output.Text = r.Content.ReadAsStringAsync().Result;
 		}
