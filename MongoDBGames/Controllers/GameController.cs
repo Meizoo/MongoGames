@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,28 +29,27 @@ namespace MongoDBGames.Controllers
         public string HelloSecure() => "Secured Hello world!";
 
         [HttpGet()]
-        [BasicAuth]
-        public async Task<IActionResult> Get()
+        public async Task<ActionResult<IEnumerable<Game>>> Get()
         {
-            return new ObjectResult(await _gameRepository.GetAllGames());
+            return Ok(await _gameRepository.GetAllGames());
         }
 
         [HttpGet("{name}", Name = "Get")]
-        public async Task<IActionResult> Get(string name)
+        public async Task<ActionResult<Game>> Get(string name)
         {
             var game = await _gameRepository.GetGame(name);
 
             if (game == null)
                 return new NotFoundResult();
 
-            return new ObjectResult(game);
+            return Ok(game);
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Game game)
         {
             await _gameRepository.Create(game);
-            return new OkObjectResult(game);
+            return Ok(game);
         }
 
         [HttpPut("{name}")]
@@ -63,7 +64,7 @@ namespace MongoDBGames.Controllers
 
             await _gameRepository.Update(game);
 
-            return new OkObjectResult(game);
+            return Ok(game);
         }
 
         [HttpDelete("{name}")]
@@ -76,7 +77,7 @@ namespace MongoDBGames.Controllers
 
             await _gameRepository.Delete(name);
 
-            return new OkResult();
+            return Ok();
         }
     }
 }

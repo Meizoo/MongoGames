@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-
-namespace MongoDBGames.Model
+using Newtonsoft.Json;
+using System.Collections.Generic;
+namespace WFClient
 {
-    [BsonIgnoreExtraElements]
     public class Game
     {
         [BsonId]
