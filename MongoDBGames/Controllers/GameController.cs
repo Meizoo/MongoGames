@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
-
+using MongoDB.Bson;
+using MongoDBGames.Helpers;
 using MongoDBGames.Model;
 using MongoDBGames.Repository;
 
@@ -20,6 +21,7 @@ namespace MongoDBGames.Controllers
 
         // GET: api/Game
         [HttpGet]
+        [BasicAuth]
         public async Task<IActionResult> Get()
         {
             return new ObjectResult(await _gameRepository.GetAllGames());
