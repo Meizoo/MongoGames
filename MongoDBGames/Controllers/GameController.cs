@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 using MongoDBGames.Helpers;
@@ -19,6 +20,28 @@ namespace MongoDBGames.Controllers
         public GameController(IGameRepository gameRepository)
         {
             _gameRepository = gameRepository;
+        }
+
+        [HttpGet("list")]
+        public Link[] List() => (
+            from i in typeof(GameController)
+                .GetMethods()
+            let get = i.GetCustomAttribute<HttpGetAttribute>()
+            where !(get is null)
+            select new Link(
+                GetUrl() + "/" + i.Name,
+                i.Name,
+                "GET"
+            )
+        ).ToArray();
+
+        private string GetUrl() => this.url ??= ComputeUrl();
+        private string url;
+
+        private string ComputeUrl()
+        {
+            string r = this.Request.GetEncodedUrl();
+            return r.Substring(0, r.LastIndexOf('/'));
         }
 
         [HttpGet("hello")]
