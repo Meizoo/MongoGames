@@ -29,7 +29,7 @@ namespace MongoDBGames
                         Configuration.GetSection("MongoDb:ConnectionString").Value;
                     options.Database = Configuration.GetSection("MongoDb:Database").Value;
                 });
-
+            services.AddMvcCore().AddMvcOptions(x => x.EnableEndpointRouting = false);
             services.AddSingleton<IMongoClient, MongoClient>(
                 _ => new MongoClient(Configuration.GetSection("MongoDb:ConnectionString").Value));
 
@@ -38,6 +38,7 @@ namespace MongoDBGames
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        [System.Obsolete]
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
