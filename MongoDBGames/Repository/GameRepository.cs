@@ -24,6 +24,19 @@ namespace MongoDBGames.Repository
                             .ToListAsync();
         }
 
+        public IEnumerable<Game> Find(string name)
+        {
+            FilterDefinition<Game> filter = Builders<Game>.Filter.Regex(
+                "Name", 
+                new MongoDB.Bson.BsonRegularExpression(name)
+            );
+
+            return _context
+                .Games
+                .Find(filter)
+                .ToEnumerable();
+        }
+
         public Task<Game> GetGame(string name)
         {
             FilterDefinition<Game> filter = Builders<Game>.Filter.Eq(m => m.Name, name);

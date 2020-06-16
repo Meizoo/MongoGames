@@ -18,10 +18,8 @@ namespace MongoDBGames.Controllers
     {
         private readonly IGameRepository _gameRepository;
 
-        public GameController(IGameRepository gameRepository)
-        {
-            _gameRepository = gameRepository;
-        }
+        public GameController(IGameRepository gameRepository) => 
+            this._gameRepository = gameRepository;
 
         [HttpGet("list")]
         public Link[] List() => (
@@ -44,6 +42,10 @@ namespace MongoDBGames.Controllers
             string r = this.Request.GetEncodedUrl();
             return r.Substring(0, r.LastIndexOf('/'));
         }
+
+        [HttpGet("search")]
+        public IEnumerable<Game> Search(string name) => 
+            this._gameRepository.Find(name);
 
         [HttpGet("hello")]
         public string Hello() => "Hello world!";
