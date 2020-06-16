@@ -1,9 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,18 +8,19 @@ namespace WFClient
     public partial class Form1 : Form
     {
         private GameService gameService;
+
         public Form1()
         {
             InitializeComponent();
-            gameService = new GameService();
-            dataGridView1.DataSource = GetProductsAsync();
+            this.gameService = new GameService();
+            this.dataGridView1.DataSource = GetProductsAsync();
         }
 
         public async Task<List<Game>> GetProductsAsync()
         {
             var list = await this.gameService.GetAllProducts();
 
-            if (list == null)
+            if (list is null)
             {
                 MessageBox.Show("Musisz zostać zaautoryzowany");
                 return null;
@@ -80,29 +77,23 @@ namespace WFClient
         {
             var result = await gameService.DeleteProduct();
             if (!result.IsSuccessStatusCode)
-            {
                 MessageBox.Show("Taka gra nie istnieje");
-            }
-            dataGridView1.DataSource = await this.gameService.GetAllProducts();
+            this.dataGridView1.DataSource = await this.gameService.GetAllProducts();
         }
 
         private async void GetGameDetails_Click(object sender, EventArgs e)
         {
             var result = await gameService.UpdateProduct();
             if (!result.IsSuccessStatusCode)
-            {
                 MessageBox.Show("Nie ma takiej gry w bazie");
-            }
         }
 
         private async void EditGame_Click(object sender, EventArgs e)
         {
             var result = await this.gameService.UpdateProduct();
             if (!result.IsSuccessStatusCode)
-            {
                 MessageBox.Show("Taka gra nie istnieje");
-            }
-            dataGridView1.DataSource = await this.gameService.GetAllProducts();
+            this.dataGridView1.DataSource = await this.gameService.GetAllProducts();
         }
     }
 }
