@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+
 using MongoDB.Driver;
 
 namespace MongoDBGames.Model
@@ -7,10 +8,8 @@ namespace MongoDBGames.Model
     {
         private readonly IMongoDatabase _db;
 
-        public GameContext(IOptions<Settings> options, IMongoClient client)
-        {
-            _db = client.GetDatabase(options.Value.Database);
-        }
+        public GameContext(IOptions<Settings> options, IMongoClient client) => 
+            this._db = client.GetDatabase(options.Value.Database);
 
         public IMongoCollection<Game> Games => _db.GetCollection<Game>("Games");
     }

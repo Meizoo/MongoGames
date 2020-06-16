@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MongoDBGames.Helpers
 {
@@ -17,11 +15,9 @@ namespace MongoDBGames.Helpers
 
         public BasicAuthFilter(string realm)
         {
-            _realm = realm;
-            if (string.IsNullOrWhiteSpace(_realm))
-            {
+            this._realm = realm;
+            if (string.IsNullOrWhiteSpace(this._realm))
                 throw new ArgumentNullException(nameof(realm), @"Please provide a non-empty realm value.");
-            }
         }
 
         public void OnAuthorization(AuthorizationFilterContext context)
@@ -35,15 +31,11 @@ namespace MongoDBGames.Helpers
                     if (authHeaderValue.Scheme.Equals(AuthenticationSchemes.Basic.ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         var credentials = Encoding.UTF8
-                                            .GetString(Convert.FromBase64String(authHeaderValue.Parameter ?? string.Empty))
-                                            .Split(':', 2);
-                        if (credentials.Length == 2)
-                        {
-                            if (IsAuthorized(context, credentials[0], credentials[1]))
-                            {
-                                return;
-                            }
-                        }
+                            .GetString(Convert.FromBase64String(authHeaderValue.Parameter ?? string.Empty))
+                            .Split(':', 2);
+
+                        if (credentials.Length == 2 && IsAuthorized(context, credentials[0], credentials[1]))
+                            return;
                     }
                 }
 
