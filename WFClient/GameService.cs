@@ -38,14 +38,9 @@ namespace WFClient
                     : null;
         }
 
-        public async Task<HttpResponseMessage> AddProduct()
+        public async Task<HttpResponseMessage> AddProduct(Game game)
         {
-            var p = new Game
-            {
-                Name = "Dobra gra",
-                Developer = "Najlepszy developer",
-                Publisher = "Najlepszy publisher"
-            };
+            var p = game;
 
             using (var client = new HttpClient())
                 return await client.PostAsync(

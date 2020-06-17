@@ -17,5 +17,40 @@ namespace WFClient
             InitializeComponent();
         }
 
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selected = checkedListBox1.SelectedIndex;
+            if (selected != -1)
+            {
+                var text = checkedListBox1.Items[selected].ToString();
+                if (!platforms.Contains(text))
+                    platforms.Add(text);
+            }
+        }
+        private List<string> platforms = new List<string>();
+
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            this.Game = null;
+            this.Close();
+        }
+        public Game Game;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(nameBox.Text) || string.IsNullOrWhiteSpace(developerBox.Text) || string.IsNullOrWhiteSpace(producerBox.Text) || platforms.Count != 0)
+            {
+                MessageBox.Show("Uzupełnij wszystkie dane");
+                return;
+            }
+            this.Game = new Game()
+            {
+                Name = nameBox.Text,
+                Developer = developerBox.Text,
+                Publisher = producerBox.Text,
+                Platforms = platforms,
+            };
+            this.Close();
+        }
     }
 }

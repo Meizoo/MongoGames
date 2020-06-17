@@ -14,6 +14,7 @@ namespace WFClient
             InitializeComponent();
             this.gameService = new GameService();
             this.dataGridView1.DataSource = GetProductsAsync();
+
         }
 
         public async Task<List<Game>> GetProductsAsync()
@@ -65,7 +66,12 @@ namespace WFClient
 
         private async void AddGame_Click(object sender, EventArgs e)
         {
-            var result = await gameService.AddProduct();
+            var form = new CreateForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                if (form.Game != null)
+                    await gameService.AddProduct(form.Game);
+            }
             dataGridView1.DataSource = await this.gameService.GetAllProducts();
         }
 

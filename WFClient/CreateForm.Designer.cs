@@ -30,9 +30,9 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.nameBox = new System.Windows.Forms.TextBox();
+            this.developerBox = new System.Windows.Forms.TextBox();
+            this.producerBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,47 +41,51 @@
             // 
             // button1
             // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Location = new System.Drawing.Point(295, 127);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Stwórz";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // backBtn
             // 
+            this.backBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.backBtn.Location = new System.Drawing.Point(27, 127);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(75, 23);
             this.backBtn.TabIndex = 1;
             this.backBtn.Text = "Cofnij";
             this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // textBox1
+            // nameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(86, 8);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 20);
-            this.textBox1.TabIndex = 2;
+            this.nameBox.Location = new System.Drawing.Point(86, 8);
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(125, 20);
+            this.nameBox.TabIndex = 2;
             // 
-            // textBox2
+            // developerBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(86, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 20);
-            this.textBox2.TabIndex = 3;
+            this.developerBox.Location = new System.Drawing.Point(86, 60);
+            this.developerBox.Name = "developerBox";
+            this.developerBox.Size = new System.Drawing.Size(125, 20);
+            this.developerBox.TabIndex = 3;
             // 
-            // textBox3
+            // producerBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(86, 34);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(125, 20);
-            this.textBox3.TabIndex = 4;
+            this.producerBox.Location = new System.Drawing.Point(86, 34);
+            this.producerBox.Name = "producerBox";
+            this.producerBox.Size = new System.Drawing.Size(125, 20);
+            this.producerBox.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Snow;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(40, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
@@ -91,7 +95,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Snow;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(24, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
@@ -101,7 +105,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Snow;
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(25, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
@@ -110,9 +114,10 @@
             // 
             // checkedListBox1
             // 
-            this.checkedListBox1.BackColor = System.Drawing.SystemColors.InfoText;
+            this.checkedListBox1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox1.ForeColor = System.Drawing.SystemColors.Window;
+            this.checkedListBox1.CheckOnClick = true;
+            this.checkedListBox1.ForeColor = System.Drawing.SystemColors.InfoText;
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Items.AddRange(new object[] {
             "PC",
@@ -126,20 +131,21 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(138, 105);
             this.checkedListBox1.TabIndex = 8;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // CreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Desktop;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(399, 162);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.producerBox);
+            this.Controls.Add(this.developerBox);
+            this.Controls.Add(this.nameBox);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -154,9 +160,9 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button backBtn;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox nameBox;
+        private System.Windows.Forms.TextBox developerBox;
+        private System.Windows.Forms.TextBox producerBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

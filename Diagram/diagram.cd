@@ -56,7 +56,6 @@
       <HashCode>AAAEQAAAAAAAAAAAAAAAAAAAAAAACAAABAAAAAAAAAA=</HashCode>
       <FileName>Games\Helpers\BasicAuthFilter.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="MongoDBGames.Helpers.UserService" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="8.75" Y="4.75" Width="1.5" />
