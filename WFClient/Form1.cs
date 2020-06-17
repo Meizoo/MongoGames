@@ -58,7 +58,7 @@ namespace WFClient
             
         }
         private static string[] FlightToArray(Game f) => new[]
-     {
+        {
                 f.Name,
                 f.Developer,
                 f.Publisher,
@@ -132,5 +132,9 @@ namespace WFClient
 
         }
 
+        private void PdfGenerate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
