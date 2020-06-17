@@ -36,10 +36,6 @@ namespace WFClient
         {
 
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void ListView_SelectedIndexChanged(object sender, EventArgs e)
         {
