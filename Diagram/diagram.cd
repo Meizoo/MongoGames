@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PdfGen.PdfBuilder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACCCAAQBEAAIAAQAAAAEACAAAQAAAAAAABQ=</HashCode>
+      <FileName>PdfGen\PdfBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WFClient.Game" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAQAAIAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>WFClient\Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WFClient.GameService" Collapsed="true">
+    <Position X="7" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAQAiAACAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>WFClient\GameService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MongoDBGames.Controllers.ActionResult&lt;T&gt;" Collapsed="true">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Controllers\ActionResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MongoDBGames.Controllers.GameController" Collapsed="true">
+    <Position X="10.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAABAAAAAAAAACAEAAAAAAAAAIAAgAAo=</HashCode>
+      <FileName>Games\Controllers\GameController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MongoDBGames.Controllers.Link" Collapsed="true">
+    <Position X="8.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAgAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Controllers\Link.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MongoDBGames.Helpers.BasicAuthAttribute" Collapsed="true">
+    <Position X="8.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Helpers\BasicAuthAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MongoDBGames.Helpers.BasicAuthFilter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEQAAAAAAAAAAAAAAAAAAAAAAACAAABAAAAAAAAAA=</HashCode>
+      <FileName>Games\Helpers\BasicAuthFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MongoDBGames.Helpers.UserService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAICAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Helpers\UserService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MongoDBGames.Model.Game" Collapsed="true">
+    <Position X="7" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAQAAIAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Games\Model\Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MongoDBGames.Model.GameContext" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Model\GameContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MongoDBGames.Model.Settings" Collapsed="true">
+    <Position X="12.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Games\Model\Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MongoDBGames.Repository.GameRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAAAAAABgAAAAAAAAAAAAEIAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Repository\GameRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MongoDBGames.Startup" Collapsed="true">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAACAAAAAA=</HashCode>
+      <FileName>Games\Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MongoDBGames.Helpers.IUserService" Collapsed="true">
+    <Position X="10.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Helpers\IUserService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MongoDBGames.Model.IGameContext" Collapsed="true">
+    <Position X="7" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Model\IGameContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MongoDBGames.Repository.IGameRepository" Collapsed="true">
+    <Position X="8.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAAAAAAAgAAAAAAAAAAAAEIAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Repository\IGameRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="PdfGen.DocumentType" Collapsed="true">
+    <Position X="7" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PdfGen\DocumentType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PdfGen.ListNumberingType" Collapsed="true">
+    <Position X="8.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAgBACABEAAAAAAAABaAAAAAAAAAAABAAA=</HashCode>
+      <FileName>PdfGen\ListNumberingType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
