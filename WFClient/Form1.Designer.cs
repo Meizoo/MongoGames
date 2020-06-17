@@ -157,39 +157,44 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.GridColor = System.Drawing.Color.White;
-			this.dataGridView1.Location = new System.Drawing.Point(16, 41);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(604, 426);
-			this.dataGridView1.TabIndex = 12;
-			// 
-			// Form1
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(841, 479);
-			this.Controls.Add(this.dataGridView1);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.EditGame);
-			this.Controls.Add(this.reservNumber);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.searchText);
-			this.Controls.Add(this.GetGameDetails);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.DeleteGame);
-			this.Controls.Add(this.AddGame);
-			this.Margin = new System.Windows.Forms.Padding(2);
-			this.Name = "Form1";
-			this.Text = "Baza gier";
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.Color.White;
+            this.dataGridView1.Location = new System.Drawing.Point(16, 41);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(604, 426);
+            this.dataGridView1.TabIndex = 12;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(841, 479);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.EditGame);
+            this.Controls.Add(this.reservNumber);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.searchText);
+            this.Controls.Add(this.GetGameDetails);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.DeleteGame);
+            this.Controls.Add(this.AddGame);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "Form1";
+            this.Text = "Baza gier";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -27,7 +27,7 @@ namespace MongoDBGames.Repository
         public IEnumerable<Game> Find(string name)
         {
             FilterDefinition<Game> filter = Builders<Game>.Filter.Regex(
-                "Name", 
+                "id", 
                 new MongoDB.Bson.BsonRegularExpression(name)
             );
 
@@ -39,7 +39,7 @@ namespace MongoDBGames.Repository
 
         public Task<Game> GetGame(string name)
         {
-            FilterDefinition<Game> filter = Builders<Game>.Filter.Eq(m => m.Name, name);
+            FilterDefinition<Game> filter = Builders<Game>.Filter.Eq(m => m.Id, name);
 
             return _context
                     .Games
@@ -67,7 +67,7 @@ namespace MongoDBGames.Repository
 
         public async Task<bool> Delete(string name)
         {
-            FilterDefinition<Game> filter = Builders<Game>.Filter.Eq(m => m.Name, name);
+            FilterDefinition<Game> filter = Builders<Game>.Filter.Eq(m => m.Id, name);
 
             DeleteResult deleteResult = await _context
                                                 .Games

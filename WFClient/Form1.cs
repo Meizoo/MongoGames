@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -8,13 +9,13 @@ namespace WFClient
     public partial class Form1 : Form
     {
         private GameService gameService;
+        private List<Game> games;
 
         public Form1()
         {
             InitializeComponent();
-            this.gameService = new GameService();
-            this.dataGridView1.DataSource = GetProductsAsync();
 
+            this.gameService = new GameService();
         }
 
         public async Task<List<Game>> GetProductsAsync()
@@ -50,9 +51,19 @@ namespace WFClient
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            this.dataGridView1.DataSource = null;
+            var a = this.games
+                .Where(i => i.Name.ToUpper().Contains(this.searchText.Text.ToUpper())).ToArray();
+            this.dataGridView1.DataSource = a;
+            
         }
-
+        private static string[] FlightToArray(Game f) => new[]
+     {
+                f.Name,
+                f.Developer,
+                f.Publisher,
+                string.Join(",", f.Platforms)
+            };
 
         private void buyTicket_Click(object sender, EventArgs e)
         {
@@ -97,5 +108,29 @@ namespace WFClient
                 MessageBox.Show("Taka gra nie istnieje");
             this.dataGridView1.DataSource = await this.gameService.GetAllProducts();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            var list = await this.gameService.GetAllProducts();
+
+            if (list is null)
+            {
+                MessageBox.Show("Musisz zostać zaautoryzowany");
+                return;
+            }
+            this.games = list;
+            dataGridView1.DataSource = list;
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
