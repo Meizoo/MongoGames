@@ -106,5 +106,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PdfGen\PdfGen.csproj">
+      <Project>{69B9259C-B7C0-47DE-B7A9-EE67CEBF2D5A}</Project>
+      <Name>PdfGen</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
