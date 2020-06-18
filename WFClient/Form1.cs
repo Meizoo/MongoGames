@@ -113,7 +113,7 @@ namespace WFClient
             {
                 if (form.Game != null)
                 {
-                    var result = await this.gameService.UpdateProduct(null);
+                    var result = await this.gameService.UpdateProduct(form.Game);
                     if (!result.IsSuccessStatusCode)
                         MessageBox.Show("Taka gra nie istnieje");
 
