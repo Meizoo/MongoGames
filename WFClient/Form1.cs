@@ -93,9 +93,17 @@ namespace WFClient
 
         private async void EditGame_Click(object sender, EventArgs e)
         {
-            var result = await this.gameService.UpdateProduct(null);
-            if (!result.IsSuccessStatusCode)
-                MessageBox.Show("Taka gra nie istnieje");
+            var form = new EditForm(await gameService.GetProduct(this.selected));
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                if (form.Game != null)
+                {
+                    var result = await this.gameService.UpdateProduct(form.Game);
+                    if (!result.IsSuccessStatusCode)
+                        MessageBox.Show("Taka gra nie istnieje");
+
+                }
+            }
             this.dataGridView1.DataSource = await this.gameService.GetAllProducts();
         }
 
