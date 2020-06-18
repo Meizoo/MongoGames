@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PdfGen;
 
 namespace WFClient
 {
@@ -31,25 +32,6 @@ namespace WFClient
             return list;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-        public async Task PdfGo()
-        {
-
-        }
-
-        private void ListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void login_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             this.dataGridView1.DataSource = null;
@@ -58,8 +40,9 @@ namespace WFClient
             this.dataGridView1.DataSource = a;
 
         }
+
         private static string[] FlightToArray(Game f) => new[]
-        {
+            {
                 f.Name,
                 f.Developer,
                 f.Publisher,
@@ -95,15 +78,17 @@ namespace WFClient
             this.dataGridView1.DataSource = await this.gameService.GetAllProducts();
         }
 
-        private async void GetGameDetails_Click(object sender, EventArgs e)
+        private async void GetGameDetails_Click(object sender, EventArgs e) => 
+            MessageBox.Show(
+                (await GetProduct()).ToString()
+            );
+
+        private async Task<Game> GetProduct()
         {
             var result = await gameService.GetProduct(this.selected);
-            if (result == null)
-            {
+            if (result is null)
                 MessageBox.Show("Nie ma takiej gry w bazie");
-                return;
-            }
-            MessageBox.Show(result.ToString());
+            return result;
         }
 
         private async void EditGame_Click(object sender, EventArgs e)
@@ -133,9 +118,25 @@ namespace WFClient
 
         }
 
-        private void PdfGenerate_Click(object sender, EventArgs e)
+        private async void PdfGenerate_Click(object sender, EventArgs e)
         {
+            var item = await GetProduct();
+            if (!(item is null))
+            {
+                var dlg = new SaveFileDialog();
 
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    using (var pdf = new PdfBuilder(dlg.FileName))
+                        pdf.AddParagraph(
+                            string.Concat("Id: ", item.Id),
+                            string.Concat("Nazwa: ", item.Name),
+                            string.Concat("Deweloper: ", item.Developer),
+                            string.Concat("Wydawca: ", item.Publisher),
+                            string.Concat("Wspierane platformy: ", string.Join(", ", item.Platforms))
+                        );
+                }
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
