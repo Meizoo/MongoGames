@@ -34,9 +34,7 @@
             this.GetGameDetails = new System.Windows.Forms.Button();
             this.searchText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.reservNumber = new System.Windows.Forms.TextBox();
             this.EditGame = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -120,18 +118,6 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Wyszukaj";
             // 
-            // reservNumber
-            // 
-            this.reservNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.reservNumber.BackColor = System.Drawing.Color.White;
-            this.reservNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.reservNumber.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.reservNumber.Location = new System.Drawing.Point(628, 122);
-            this.reservNumber.Margin = new System.Windows.Forms.Padding(5);
-            this.reservNumber.Name = "reservNumber";
-            this.reservNumber.Size = new System.Drawing.Size(202, 20);
-            this.reservNumber.TabIndex = 9;
-            // 
             // EditGame
             // 
             this.EditGame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -145,16 +131,6 @@
             this.EditGame.Text = "Edytuj grę";
             this.EditGame.UseVisualStyleBackColor = false;
             this.EditGame.Click += new System.EventHandler(this.EditGame_Click);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(629, 106);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Wprowadź numer rezerwacji";
             // 
             // dataGridView1
             // 
@@ -192,9 +168,7 @@
             this.ClientSize = new System.Drawing.Size(841, 479);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.EditGame);
-            this.Controls.Add(this.reservNumber);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.searchText);
             this.Controls.Add(this.GetGameDetails);
@@ -218,9 +192,7 @@
         private System.Windows.Forms.Button GetGameDetails;
         private System.Windows.Forms.TextBox searchText;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox reservNumber;
         private System.Windows.Forms.Button EditGame;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
     }

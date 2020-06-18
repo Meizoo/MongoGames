@@ -19,6 +19,18 @@ namespace WFClient
             this.nameBox.Text = game.Name;
             this.developerBox.Text = game.Developer;
             this.producerBox.Text = game.Publisher;
+            foreach (var item in game.Platforms)
+            {
+
+                for (int i = 0; i <= checkedListBox1.Items.Count - 1; i++)
+                {
+
+                    if (checkedListBox1.GetItemCheckState(i) == CheckState.Unchecked && checkedListBox1.Items[i].ToString() == item)
+                    {
+                        checkedListBox1.SetItemChecked(i, true);
+                    }
+                }
+            }
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,6 +61,7 @@ namespace WFClient
             }
             this.Game = new Game()
             {
+                Id = Game?.Id,
                 Name = nameBox.Text,
                 Developer = developerBox.Text,
                 Publisher = producerBox.Text,

@@ -45,6 +45,7 @@ namespace WFClient
             }
             this.Game = new Game()
             {
+
                 Name = nameBox.Text,
                 Developer = developerBox.Text,
                 Publisher = producerBox.Text,
