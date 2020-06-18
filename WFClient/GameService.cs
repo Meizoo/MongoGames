@@ -29,10 +29,10 @@ namespace WFClient
             }
         }
 
-        public async Task<Game> GetProduct()
+        public async Task<Game> GetProduct(string id)
         {
             using (var client = new HttpClient())
-            using (var response = await client.GetAsync(String.Format("{0}/{1}", _uri, "Naruto")))
+            using (var response = await client.GetAsync(String.Format("{0}/{1}", _uri, id)))
                 return response.IsSuccessStatusCode 
                     ? JsonConvert.DeserializeObject<Game>(await response.Content.ReadAsStringAsync()) 
                     : null;
@@ -49,26 +49,21 @@ namespace WFClient
                 );
         }
 
-        public async Task<HttpResponseMessage> UpdateProduct()
+        public async Task<HttpResponseMessage> UpdateProduct(Game game)
         {
-            var p = new Game
-            {
-                Name = "Dobra gra",
-                Developer = "Najlepszy developer",
-                Publisher = "Najlepszy publisher edytowany"
-            };
+            var p = game;
 
             using (var client = new HttpClient())
                 return await client.PutAsync(
-                    string.Format("{0}/{1}", this._uri, "Dobra gra"), 
+                    string.Format("{0}/{1}", this._uri, game.Id), 
                     new StringContent(JsonConvert.SerializeObject(p), Encoding.UTF8, "application/json")
                 );
         }
 
-        public async Task<HttpResponseMessage> DeleteProduct()
+        public async Task<HttpResponseMessage> DeleteProduct(string id)
         {
             using (var client = new HttpClient())
-                return await client.DeleteAsync(String.Format("{0}/{1}", _uri, "Dobra gra"));
+                return await client.DeleteAsync(String.Format("{0}/{1}", _uri, id));
         }
     }
 }

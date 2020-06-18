@@ -10,6 +10,7 @@ namespace WFClient
     {
         private GameService gameService;
         private List<Game> games;
+        private string selected;
 
         public Form1()
         {
@@ -55,7 +56,7 @@ namespace WFClient
             var a = this.games
                 .Where(i => i.Name.ToUpper().Contains(this.searchText.Text.ToUpper())).ToArray();
             this.dataGridView1.DataSource = a;
-            
+
         }
         private static string[] FlightToArray(Game f) => new[]
         {
@@ -88,7 +89,7 @@ namespace WFClient
 
         private async void DeleteGame_Click(object sender, EventArgs e)
         {
-            var result = await gameService.DeleteProduct();
+            var result = await gameService.DeleteProduct(this.selected);
             if (!result.IsSuccessStatusCode)
                 MessageBox.Show("Taka gra nie istnieje");
             this.dataGridView1.DataSource = await this.gameService.GetAllProducts();
@@ -96,23 +97,23 @@ namespace WFClient
 
         private async void GetGameDetails_Click(object sender, EventArgs e)
         {
-            var result = await gameService.UpdateProduct();
-            if (!result.IsSuccessStatusCode)
+            var result = await gameService.GetProduct(this.selected);
+            if (result == null)
+            {
                 MessageBox.Show("Nie ma takiej gry w bazie");
+                return;
+            }
+            MessageBox.Show(result.ToString());
         }
 
         private async void EditGame_Click(object sender, EventArgs e)
         {
-            var result = await this.gameService.UpdateProduct();
+            var result = await this.gameService.UpdateProduct(null);
             if (!result.IsSuccessStatusCode)
                 MessageBox.Show("Taka gra nie istnieje");
             this.dataGridView1.DataSource = await this.gameService.GetAllProducts();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private async void Form1_Load(object sender, EventArgs e)
         {
@@ -135,6 +136,15 @@ namespace WFClient
         private void PdfGenerate_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                this.selected = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                MessageBox.Show(this.selected);
+            }
         }
     }
 }

@@ -18,5 +18,8 @@ namespace WFClient
         public string Publisher { get; set; }
 
         public List<string> Platforms { get; set; }
+
+        public override string ToString() 
+            => $"\n Nazwa: {this.Name}\n Wydawca: {this.Developer} \n Producent: {this.Publisher} \n Platformy: {string.Join(",", Platforms)}";
     }
 }
